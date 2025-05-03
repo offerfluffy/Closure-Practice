@@ -50,3 +50,33 @@ function makeClickHandler(size) {
     document.body.style.fontSize = `${size}px`;
   };
 }
+
+// Let and Var difference with Closure
+
+const funcs = [];
+
+// All refers to ine place in memory
+for (var i = 0; i < 3; i++) {
+  funcs.push(function () {
+    console.log(i);
+  });
+}
+
+// Later…
+funcs[0](); // 3
+funcs[1](); // 3
+funcs[2](); // 3
+
+const funcs2 = [];
+
+// On each iteration new part of memory is created
+for (let i = 0; i < 3; i++) {
+  funcs2.push(function () {
+    console.log(i);
+  });
+}
+
+// Later…
+funcs2[0](); // 0
+funcs2[1](); // 1
+funcs2[2](); // 2
